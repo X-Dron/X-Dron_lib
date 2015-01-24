@@ -1,3 +1,12 @@
+/*
+* Project: X-Dron_library/Arduino Library
+* Library class: Timer_P
+* Author: X-Dron, X-Dron@mail.ru
+* Copyright: (C) 2015 by X-Dron
+* License: GNU GPL v3 (see License.txt)
+* Web: https://github.com/X-Dron/X-Dron_lib
+*/
+
 #include "Timer_P.h"
 #include <Arduino.h>
 

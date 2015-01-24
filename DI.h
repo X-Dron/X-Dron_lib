@@ -1,12 +1,15 @@
+/*
+* Project: X-Dron_library/Arduino Library
+* Library class: DI
+* Author: X-Dron, X-Dron@mail.ru
+* Copyright: (C) 2015 by X-Dron
+* License: GNU GPL v3 (see License.txt)
+* Web: https://github.com/X-Dron/X-Dron_lib
+*/
 #ifndef DI_h
 #define DI_h
 #include <Arduino.h>
 #include "Timer_P.h"
-
-/* DI library 
-MIT license
-written by X-Dron
-*/
 
 class DI
 {

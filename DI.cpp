@@ -9,7 +9,18 @@
 #include "DI.h"
 #include <Arduino.h>
 
+DI::DI()
+{
+}
+
 DI::DI(int PIN, long Duration)
+{
+  pinMode(PIN, INPUT_PULLUP);
+  this->Filtr_Duration = Duration;
+  this->PIN =PIN;
+}
+
+void DI::Init(int PIN, long Duration)
 {
   pinMode(PIN, INPUT_PULLUP);
   this->Filtr_Duration = Duration;

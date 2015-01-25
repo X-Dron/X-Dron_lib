@@ -19,7 +19,9 @@ private:
   Timer_P DI_Filtr_On, DI_Filtr_Off;
   long Filtr_Duration;
 public:
+  DI();
   DI(int PIN, long Duration);
+  void Init(int PIN, long Duration);
   boolean DI_Read();
   void DI_Refresh();
 };

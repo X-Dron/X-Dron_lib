@@ -1,4 +1,4 @@
-/*
+п»ї/*
 * Project: X-Dron_library/Arduino Library
 * Library class: Timer_P
 * Author: X-Dron, X-Dron@mail.ru
@@ -25,16 +25,16 @@ long Timer_P::GetRemains()
 
 boolean Timer_P::Timer(boolean Condition, boolean Reset, int Mode, long Duration)
 {
-  boolean R_Condition = Condition & !(this->Old_Condition);
-  boolean F_Condition = !Condition & this->Old_Condition;
-  boolean R_Reset = Reset & !(this->Old_Reset);
-  boolean F_Reset = !Reset & this->Old_Reset;
+  boolean R_Condition = Condition && !(this->Old_Condition);
+  boolean F_Condition = !Condition && this->Old_Condition;
+  boolean R_Reset = Reset && !(this->Old_Reset);
+  boolean F_Reset = !Reset && this->Old_Reset;
   boolean R_TimerOut;
   boolean F_TimerOut;
   
-  if ((R_Condition & !Reset) & Mode < 3) this->TargetMsec = millis() + Duration;
-  if ((R_Condition & !Reset) & Mode ==3 & !(this->TimerOut)) this->TargetMsec = millis() + Duration; 
-  if ((F_Condition & !Reset) & Mode == 4)// засечка времени по переднему фронту события, если нет сброса.
+  if ((R_Condition && !Reset) && Mode < 3) this->TargetMsec = millis() + Duration;
+  if ((R_Condition && !Reset) && Mode ==3 && !(this->TimerOut)) this->TargetMsec = millis() + Duration; 
+  if ((F_Condition && !Reset) && Mode == 4)// Р·Р°СЃРµС‡РєР° РІСЂРµРјРµРЅРё РїРѕ РїРµСЂРµРґРЅРµРјСѓ С„СЂРѕРЅС‚Сѓ СЃРѕР±С‹С‚РёСЏ, РµСЃР»Рё РЅРµС‚ СЃР±СЂРѕСЃР°.
      {
         this->TargetMsec = millis() + Duration;
         this->TimerRun = true;
@@ -55,7 +55,7 @@ boolean Timer_P::Timer(boolean Condition, boolean Reset, int Mode, long Duration
           this->TimerOut = true;
           this->TimerRun = true;
         }  
-        if ((Condition & (millis() >  this->TargetMsec)) | !Condition)
+        if ((Condition && (millis() >  this->TargetMsec)) || !Condition)
         {
           this->TimerOut = false;
           this->TimerRun = false;
@@ -75,7 +75,7 @@ boolean Timer_P::Timer(boolean Condition, boolean Reset, int Mode, long Duration
         break;
     case 2:
         if (R_Condition) this->TimerRun = true; 
-        if (Condition & (millis() >  this->TargetMsec) & this->TimerRun & !(this->TimerOut)) 
+        if (Condition && (millis() >  this->TargetMsec) && this->TimerRun && !(this->TimerOut)) 
         {
           this->TimerOut = true;
           this->TimerRun = false;
@@ -88,37 +88,37 @@ boolean Timer_P::Timer(boolean Condition, boolean Reset, int Mode, long Duration
         break;
     case 3:
         if (R_Condition) this->TimerRun = true; 
-        if (this->TimerRun & (millis() >  this->TargetMsec)) 
+        if (this->TimerRun && (millis() >  this->TargetMsec)) 
         {
           this->TimerOut = true;
           this->TimerRun = false;
        }
         break;
     case 4:
-        if (Condition | this->TimerRun) this->TimerOut = true;
-        if (this->TimerRun & (millis() >  this->TargetMsec)) 
+        if (Condition || this->TimerRun) this->TimerOut = true;
+        if (this->TimerRun && (millis() >  this->TargetMsec)) 
         {
           this->TimerOut = false;
           this->TimerRun = false;
 		}		
         break;
     }
-	F_TimerOut = this->Old_TimerOut & !(this->TimerOut);
-	R_TimerOut = !(this->Old_TimerOut)&(this->TimerOut);
+	F_TimerOut = this->Old_TimerOut && !(this->TimerOut);
+	R_TimerOut = !(this->Old_TimerOut)&&(this->TimerOut);
 	
 	switch (Mode) {
 	case 0:
 	case 1:
 		if (F_TimerOut) this->Remains = 0;
-		if (!(this->TimerRun) & !Condition) this->Remains = Duration;
+		if (!(this->TimerRun) && !Condition) this->Remains = Duration;
 		break;
 	case 2:
 		if (R_TimerOut) this->Remains = 0;
-		if (!(this->TimerRun) & !Condition) this->Remains = Duration;
+		if (!(this->TimerRun) && !Condition) this->Remains = Duration;
 	    break;
 	case 3:
 		if (R_TimerOut) this->Remains = 0;
-		if (!(this->TimerRun) & !TimerOut) this->Remains = Duration;
+		if (!(this->TimerRun) && !TimerOut) this->Remains = Duration;
 	    break;
 	case 4:
 		if (!(this->TimerRun)) this->Remains = Duration;

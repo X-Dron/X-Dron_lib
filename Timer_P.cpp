@@ -1,4 +1,4 @@
-﻿/*
+/*
 * Project: X-Dron_library/Arduino Library
 * Library class: Timer_P
 * Author: X-Dron, X-Dron@mail.ru
@@ -34,7 +34,7 @@ boolean Timer_P::Timer(boolean Condition, boolean Reset, int Mode, long Duration
   
   if ((R_Condition && !Reset) && Mode < 3) this->TargetMsec = millis() + Duration;
   if ((R_Condition && !Reset) && Mode ==3 && !(this->TimerOut)) this->TargetMsec = millis() + Duration; 
-  if ((F_Condition && !Reset) && Mode == 4)// засечка времени по переднему фронту события, если нет сброса.
+  if ((F_Condition && !Reset) && Mode == 4)
      {
         this->TargetMsec = millis() + Duration;
         this->TimerRun = true;

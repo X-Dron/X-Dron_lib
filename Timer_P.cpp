@@ -23,7 +23,7 @@ long Timer_P::GetRemains()
   return this->Remains;
 }
 
-boolean Timer_P::Timer(boolean Condition, boolean Reset, int Mode, long Duration)
+void Timer_P::TimerV(boolean Condition, boolean Reset, int Mode, long Duration)
 {
   boolean R_Condition = Condition && !(this->Old_Condition);
   boolean F_Condition = !Condition && this->Old_Condition;
@@ -130,5 +130,15 @@ boolean Timer_P::Timer(boolean Condition, boolean Reset, int Mode, long Duration
 	this->Old_Condition = Condition;
 	this->Old_Reset = Reset;
 	this->Old_TimerOut = this->TimerOut;
+}
+
+boolean Timer_P::Timer(boolean Condition, boolean Reset, int Mode, long Duration)
+{
+	this->Timer_P::TimerV(Condition, Reset, Mode, Duration);
+	return this->TimerOut;
+}
+
+boolean Timer_P::Q0()
+{
 	return this->TimerOut;
 }

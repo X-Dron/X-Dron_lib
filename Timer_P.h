@@ -22,7 +22,9 @@ private:
   boolean TimerRun;
 public:
   Timer_P();
+  void TimerV(boolean Condition, boolean Reset,int Mode, long Duration);
   boolean Timer(boolean Condition, boolean Reset,int Mode, long Duration);
+  boolean Q0();
   long GetRemains();
 };
 #endif

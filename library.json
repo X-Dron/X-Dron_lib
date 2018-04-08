@@ -1,0 +1,16 @@
+{
+  "name": "X-Dron_lib",
+  "description": "X-Dron library",
+  "keywords": "X-Dron",
+  "authors": {
+    "name": "X-Dron",
+	"email": "X-Dron@mail.ru",
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/X-Dron/X-Dron_lib.git"
+  },
+  "version": "0.1",
+  "framework": "arduino",
+  "platforms": "espressif32","arduino"
+}

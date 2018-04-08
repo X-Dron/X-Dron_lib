@@ -4,7 +4,7 @@
   "keywords": "X-Dron",
   "authors": {
     "name": "X-Dron",
-	"email": "X-Dron@mail.ru",
+	"email": "X-Dron@mail.ru"
   },
   "repository": {
     "type": "git",
@@ -12,5 +12,5 @@
   },
   "version": "0.1",
   "framework": "arduino",
-  "platforms": "espressif32","arduino"
+  "platforms": "*"
 }
